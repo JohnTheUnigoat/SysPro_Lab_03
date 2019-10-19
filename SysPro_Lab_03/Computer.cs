@@ -8,6 +8,7 @@ namespace SysPro_Lab_03
 {
     class Computer
     {
+        //fields
         private static int currentID = 0;
 
         public List<Device> devices { get; }
@@ -16,6 +17,7 @@ namespace SysPro_Lab_03
 
         private Dictionary<PortType, int> availablePorts;
 
+        //properties
         public int ID { get; set; }
 
         public string[] Ports
@@ -39,6 +41,23 @@ namespace SysPro_Lab_03
                 }
 
                 return res;
+            }
+        }
+
+        //methods
+        public Computer(params (PortType, int)[] portsCount)
+        {
+            ID = currentID++;
+
+            devices = new List<Device>();
+
+            totalPorts = new Dictionary<PortType, int>();
+            availablePorts = new Dictionary<PortType, int>();
+
+            foreach(var portInfo in portsCount)
+            {
+                totalPorts[portInfo.Item1] = portInfo.Item2;
+                availablePorts[portInfo.Item1] = portInfo.Item2;
             }
         }
     }
