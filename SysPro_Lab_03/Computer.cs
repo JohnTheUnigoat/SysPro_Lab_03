@@ -60,5 +60,40 @@ namespace SysPro_Lab_03
                 availablePorts[portInfo.Item1] = portInfo.Item2;
             }
         }
+
+        public void ConnectDevice(Device device)
+        {
+            if (device.IsConnected)
+                throw new ArgumentException("Device already in use!");
+
+            if (!availablePorts.Keys.Contains(device.PortType))
+                throw new ArgumentException("This computer doesn't support this port!");
+
+            if (availablePorts[device.PortType] == 0)
+                throw new ArgumentException("All ports of this type are occupied!");
+
+            devices.Add(device);
+
+            device.IsConnected = true;
+
+            availablePorts[device.PortType]--;
+        }
+
+        public bool DisconnectDevice(Device device)
+        {
+            if (!device.IsConnected)
+                return false;
+
+            if (!devices.Contains(device))
+                return false;
+
+            availablePorts[device.PortType]++;
+
+            device.IsConnected = false;
+
+            devices.Remove(device);
+
+            return true;
+        }
     }
 }
