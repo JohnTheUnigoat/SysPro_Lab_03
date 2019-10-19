@@ -6,6 +6,8 @@ using System.Windows.Forms;
 
 namespace SysPro_Lab_03
 {
+    enum PortType { USB, COM, Micro_USB }
+
     static class Program
     {
         /// <summary>
