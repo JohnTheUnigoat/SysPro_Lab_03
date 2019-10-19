@@ -27,5 +27,22 @@ namespace SysPro_Lab_03
         public PortType PortType { get; }
 
         public bool IsConnected { get; set; }
+
+        public Device(string Name, string Manufacturer, DeviceType deviceType, PortType portType)
+        {
+            this.Name = Name;
+            this.Manufacturer = Manufacturer;
+            this.deviceType = deviceType;
+            PortType = portType;
+            IsConnected = false;
+        }
+        public Device(Device Other)
+        {
+            Name = Other.Name;
+            Manufacturer = Other.Manufacturer;
+            deviceType = Other.deviceType;
+            PortType = Other.PortType;
+            IsConnected = false;
+        }
     }
 }
