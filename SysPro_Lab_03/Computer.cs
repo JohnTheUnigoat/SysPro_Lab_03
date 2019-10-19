@@ -95,5 +95,14 @@ namespace SysPro_Lab_03
 
             return true;
         }
+
+        public override string ToString()
+        {
+            var sb = new StringBuilder();
+
+            sb.AppendFormat("№ {0}", ID);
+
+            return sb.ToString();
+        }
     }
 }
