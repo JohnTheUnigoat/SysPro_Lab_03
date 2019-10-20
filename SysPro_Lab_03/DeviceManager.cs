@@ -70,8 +70,18 @@ namespace SysPro_Lab_03
         {
             get
             {
-                return Computers.Count;
+                return computers.Count;
             }
+        }
+
+        //methods
+        public DeviceManager()
+        {
+            computers = new List<Computer>();
+            devices = new List<Device>();
+
+            totalDeviceCount = new SortedList<Device.DeviceType, int>();
+            availableDeviceCount = new SortedList<Device.DeviceType, int>();
         }
     }
 }
