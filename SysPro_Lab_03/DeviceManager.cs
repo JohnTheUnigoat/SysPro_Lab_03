@@ -83,5 +83,15 @@ namespace SysPro_Lab_03
             totalDeviceCount = new SortedList<Device.DeviceType, int>();
             availableDeviceCount = new SortedList<Device.DeviceType, int>();
         }
+
+        public void AddComputer(Computer computer)
+        {
+            computers.Add(computer);
+        }
+
+        public void RemoveComputer(int index)
+        {
+            computers.RemoveAt(index);
+        }
     }
 }
