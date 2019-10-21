@@ -44,5 +44,15 @@ namespace SysPro_Lab_03
             PortType = Other.PortType;
             IsConnected = false;
         }
+
+        public static bool operator true(Device dev)
+        {
+            return dev.IsConnected;
+        }
+
+        public static bool operator false(Device dev)
+        {
+            return !dev.IsConnected;
+        }
     }
 }
