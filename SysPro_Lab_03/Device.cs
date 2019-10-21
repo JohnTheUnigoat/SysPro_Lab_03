@@ -54,5 +54,19 @@ namespace SysPro_Lab_03
         {
             return !dev.IsConnected;
         }
+
+        public override string ToString()// Manufacturer-Name-Type-(Port)
+        {
+            StringBuilder DeviceFullName = new StringBuilder();
+
+            DeviceFullName.AppendFormat(Manufacturer);
+            DeviceFullName.AppendFormat(Name);
+            DeviceFullName.AppendFormat(deviceType.ToString());
+            DeviceFullName.Append('(');
+            DeviceFullName.AppendFormat(PortType.ToString());
+            DeviceFullName.Append(')');
+
+            return DeviceFullName.ToString();
+        }
     }
 }
