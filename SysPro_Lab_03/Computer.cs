@@ -103,6 +103,29 @@ namespace SysPro_Lab_03
             return true;
         }
 
+        public void SetPortCount(PortType type, int count)
+        {
+            if (ports.ContainsKey(type))
+            {
+                if (count < ports[type].Occupied)
+                {
+                    var e = new ArgumentException("New port count can't be smaller than the number of occupied ports!");
+                    e.Data.Add(Program.SetPortExceptionKey, type);
+                    throw e;
+                }
+                else if (count == 0)
+                    ports.Remove(type);
+            }
+            else if(count !=0)
+                ports[type].Total = count;
+        }
+
+        public void SetPortsCount(Dictionary<PortType, int> portsCount)
+        {
+            foreach (var type in portsCount.Keys)
+                SetPortCount(type, portsCount[type]);
+        }
+
         public override string ToString()
         {
             var sb = new StringBuilder();
