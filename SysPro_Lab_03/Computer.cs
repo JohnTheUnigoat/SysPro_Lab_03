@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,51 +14,57 @@ namespace SysPro_Lab_03
 
         public List<Device> devices { get; }
 
-        private Dictionary<PortType, int> totalPorts;
+        public class PortInfo
+        {
+            public int Total { get; set; }
+            public int Occupied { get; set; }
 
-        private Dictionary<PortType, int> availablePorts;
+            public int Available
+            {
+                get { return Total - Occupied; }
+            }
+
+            public PortInfo(int total, int occupied)
+            {
+                Total = total;
+                Occupied = occupied;
+            }
+
+            public override string ToString()
+            {
+                var sb = new StringBuilder();
+
+                sb.AppendFormat("{0}/{1}", Occupied, Total);
+
+                return sb.ToString();
+            }
+        }
+
+        private Dictionary<PortType, PortInfo> ports;
 
         //properties
         public int ID { get; set; }
 
-        public string[] Ports
+        public ReadOnlyDictionary<PortType, PortInfo> Ports
         {
             get
             {
-                string[] res = new string[totalPorts.Count];
-
-                var sb = new StringBuilder();
-
-                int i = 0;
-
-                foreach (var key in totalPorts.Keys)
-                {
-                    sb.Clear();
-                    sb.Append(key.ToString().Replace('_', ' '));
-                    sb.AppendFormat(":\t{0}/{1}", availablePorts[key], totalPorts[key]);
-
-                    res[i] = sb.ToString();
-                    ++i;
-                }
-
-                return res;
+                return new ReadOnlyDictionary<PortType, PortInfo>(ports);
             }
         }
 
         //methods
-        public Computer(params (PortType, int)[] portsCount)
+        public Computer(Dictionary<PortType, int> portsCount)
         {
             ID = currentID++;
 
             devices = new List<Device>();
 
-            totalPorts = new Dictionary<PortType, int>();
-            availablePorts = new Dictionary<PortType, int>();
+            ports = new Dictionary<PortType, PortInfo>();
 
-            foreach(var portInfo in portsCount)
+            foreach(var type in portsCount.Keys)
             {
-                totalPorts[portInfo.Item1] = portInfo.Item2;
-                availablePorts[portInfo.Item1] = portInfo.Item2;
+                ports[type] = new PortInfo(portsCount[type], 0);
             }
         }
 
@@ -66,17 +73,17 @@ namespace SysPro_Lab_03
             if (device.IsConnected)
                 throw new ArgumentException("Device already in use!");
 
-            if (!availablePorts.Keys.Contains(device.PortType))
+            if (!ports.Keys.Contains(device.PortType))
                 throw new ArgumentException("This computer doesn't support this port!");
 
-            if (availablePorts[device.PortType] == 0)
+            if (ports[device.PortType].Available == 0)
                 throw new ArgumentException("All ports of this type are occupied!");
 
             devices.Add(device);
 
             device.IsConnected = true;
 
-            availablePorts[device.PortType]--;
+            ports[device.PortType].Occupied++;
         }
 
         public bool DisconnectDevice(Device device)
@@ -87,7 +94,7 @@ namespace SysPro_Lab_03
             if (!devices.Contains(device))
                 return false;
 
-            availablePorts[device.PortType]++;
+            ports[device.PortType].Occupied--;
 
             device.IsConnected = false;
 
