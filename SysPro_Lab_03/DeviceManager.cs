@@ -145,9 +145,10 @@ namespace SysPro_Lab_03
         }
 
         //connecting/disconnecting devices
-        public void ConnectDeviceToComputer(int deviceIndex, int computerIndex)
+        public void ConnectDeviceToComputer(Device device, int computerIndex)
         {
-            computers[computerIndex].ConnectDevice(devices[deviceIndex]);
+            computers[computerIndex].ConnectDevice(device);
+
         }
 
         public void DisconnectDeviceFromComputer(int computerIndex, Device device)

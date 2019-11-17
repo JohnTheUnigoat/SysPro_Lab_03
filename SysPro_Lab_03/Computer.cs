@@ -12,7 +12,7 @@ namespace SysPro_Lab_03
         //fields
         private static int currentID = 0;
 
-        public List<Device> devices { get; }
+        public List<Device> Devices { get; }
 
         public class PortInfo
         {
@@ -40,7 +40,7 @@ namespace SysPro_Lab_03
             }
         }
 
-        private Dictionary<PortType, PortInfo> ports;
+        public Dictionary<PortType, PortInfo> ports;
 
         //properties
         public int ID { get; set; }
@@ -53,12 +53,31 @@ namespace SysPro_Lab_03
             }
         }
 
+        public List<string> PortList
+        {
+            get
+            {
+                List<string> res = new List<string>();
+
+                var sb = new StringBuilder();
+
+                foreach(var key in ports.Keys)
+                {
+                    sb.Clear();
+                    sb.AppendFormat("{0} - {1}", key.ToString().Replace('_', ' '), ports[key].ToString());
+                    res.Add(sb.ToString());
+                }
+
+                return res;
+            }
+        }
+
         //methods
         public Computer(Dictionary<PortType, int> portsCount)
         {
             ID = currentID++;
 
-            devices = new List<Device>();
+            Devices = new List<Device>();
 
             ports = new Dictionary<PortType, PortInfo>();
 
@@ -79,7 +98,7 @@ namespace SysPro_Lab_03
             if (ports[device.PortType].Available == 0)
                 throw new ArgumentException("All ports of this type are occupied!");
 
-            devices.Add(device);
+            Devices.Add(device);
 
             device.IsConnected = true;
 
@@ -91,14 +110,14 @@ namespace SysPro_Lab_03
             if (!device.IsConnected)
                 return false;
 
-            if (!devices.Contains(device))
+            if (!Devices.Contains(device))
                 return false;
 
             ports[device.PortType].Occupied--;
 
             device.IsConnected = false;
 
-            devices.Remove(device);
+            Devices.Remove(device);
 
             return true;
         }

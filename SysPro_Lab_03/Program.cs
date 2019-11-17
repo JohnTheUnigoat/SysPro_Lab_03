@@ -20,7 +20,7 @@ namespace SysPro_Lab_03
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new DeviceManager());
+            Application.Run(new Form1());
         }
     }
 }
