@@ -61,6 +61,12 @@
       <DependentUpon>ComputerEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="Device.cs" />
+    <Compile Include="DeviceCreateEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeviceCreateEdit.Designer.cs">
+      <DependentUpon>DeviceCreateEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,6 +80,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ComputerEdit.resx">
       <DependentUpon>ComputerEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeviceCreateEdit.resx">
+      <DependentUpon>DeviceCreateEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
