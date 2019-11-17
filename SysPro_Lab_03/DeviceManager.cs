@@ -16,7 +16,7 @@ namespace SysPro_Lab_03
 
         private SortedList<Device.DeviceType, int> totalDeviceCount;
 
-        private SortedList<Device.DeviceType, int> availableDeviceCount;
+        private SortedList<Device.DeviceType, int> unusedDeviceCount;
 
         //properties
         public ReadOnlyCollection<Computer> Computers
@@ -57,7 +57,7 @@ namespace SysPro_Lab_03
                 {
                     sb.Clear();
                     sb.Append(key.ToString());
-                    sb.AppendFormat(":\t{0}/{1}", availableDeviceCount[key], totalDeviceCount[key]);
+                    sb.AppendFormat(":\t{0}/{1}", unusedDeviceCount[key], totalDeviceCount[key]);
 
                     res[i++] = sb.ToString();
                 }
@@ -75,15 +75,17 @@ namespace SysPro_Lab_03
         }
 
         //methods
+
         public DeviceManager()
         {
             computers = new List<Computer>();
             devices = new List<Device>();
 
             totalDeviceCount = new SortedList<Device.DeviceType, int>();
-            availableDeviceCount = new SortedList<Device.DeviceType, int>();
+            unusedDeviceCount = new SortedList<Device.DeviceType, int>();
         }
 
+        //computer add/remove/edit
         public void AddComputer(Computer computer)
         {
             computers.Add(computer);
@@ -98,6 +100,48 @@ namespace SysPro_Lab_03
         {
             computers[index].ID = ID;
             computers[index].SetPortsCount(portsCount);
+        }
+
+        //device add/remove/edit
+        public void AddDevice(Device device)
+        {
+            devices.Add(device);
+
+            if (totalDeviceCount.ContainsKey(device.Type))
+            {
+                totalDeviceCount[device.Type]++;
+                unusedDeviceCount[device.Type]++;
+            }
+            else
+            {
+                totalDeviceCount[device.Type] = 1;
+                unusedDeviceCount[device.Type] = 1;
+            }
+        }
+
+        public void RemoveDevict(Device device)
+        {
+            if (device.IsConnected)
+                throw new ArgumentException("Can't remove connected device!");
+
+            devices.Remove(device);
+
+            totalDeviceCount[device.Type]--;
+            unusedDeviceCount[device.Type]--;
+
+            if (totalDeviceCount[device.Type] == 0)
+            {
+                totalDeviceCount.Remove(device.Type);
+                unusedDeviceCount.Remove(device.Type);
+            }
+        }
+
+        public void EditDevice(Device device, string name, string manufacturer, Device.DeviceType type, PortType portType)
+        {
+            device.Name = name;
+            device.Manufacturer = manufacturer;
+            device.Type = type;
+            device.PortType = portType;
         }
     }
 }

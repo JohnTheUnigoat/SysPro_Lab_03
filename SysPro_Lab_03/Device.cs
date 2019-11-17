@@ -10,21 +10,13 @@ namespace SysPro_Lab_03
     {
         public enum DeviceType { Mouse, Keyboard, HDD, Ram, Flash, Printer, Scaner, Speakers, Phone, Micrphone, Headphones, Monitor };
 
-        private DeviceType deviceType;
+        public DeviceType Type { get; set; }
 
-        public string Name { get; private set; }
+        public string Name { get; set; }
 
-        public string Manufacturer { get; private set; }
+        public string Manufacturer { get; set; }
 
-        public string Type
-        {
-            get
-            {
-                return deviceType.ToString();
-            }
-        }
-
-        public PortType PortType { get; }
+        public PortType PortType { get; set; }
 
         public bool IsConnected { get; set; }
 
@@ -32,7 +24,7 @@ namespace SysPro_Lab_03
         {
             this.Name = Name;
             this.Manufacturer = Manufacturer;
-            this.deviceType = deviceType;
+            this.Type = deviceType;
             PortType = portType;
             IsConnected = false;
         }
@@ -40,7 +32,7 @@ namespace SysPro_Lab_03
         {
             Name = Other.Name;
             Manufacturer = Other.Manufacturer;
-            deviceType = Other.deviceType;
+            Type = Other.Type;
             PortType = Other.PortType;
             IsConnected = false;
         }
@@ -61,7 +53,7 @@ namespace SysPro_Lab_03
 
             DeviceFullName.AppendFormat(Manufacturer);
             DeviceFullName.AppendFormat(Name);
-            DeviceFullName.AppendFormat(deviceType.ToString());
+            DeviceFullName.AppendFormat(Type.ToString());
             DeviceFullName.Append('(');
             DeviceFullName.AppendFormat(PortType.ToString());
             DeviceFullName.Append(')');
