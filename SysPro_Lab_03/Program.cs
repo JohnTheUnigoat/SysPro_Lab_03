@@ -8,8 +8,10 @@ namespace SysPro_Lab_03
 {
     enum PortType { USB, COM, Micro_USB }
 
-    static class Program
+    public static class Program
     {
+        public const int SetPortExceptionKey = 1;
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>

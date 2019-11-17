@@ -1,6 +1,6 @@
 ﻿namespace SysPro_Lab_03
 {
-    partial class DeviceManager
+    partial class Form1
     {
         /// <summary>
         /// Required designer variable.

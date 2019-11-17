@@ -61,6 +61,7 @@
       <DependentUpon>ComputerEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="Device.cs" />
+    <Compile Include="DeviceManager.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

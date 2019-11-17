@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace SysPro_Lab_03
 {
-    public partial class DeviceManager : Form
+    public partial class Form1 : Form
     {
-        public DeviceManager()
+        public Form1()
         {
             InitializeComponent();
         }
