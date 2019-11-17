@@ -143,5 +143,16 @@ namespace SysPro_Lab_03
             device.Type = type;
             device.PortType = portType;
         }
+
+        //connecting/disconnecting devices
+        public void ConnectDeviceToComputer(int deviceIndex, int computerIndex)
+        {
+            computers[computerIndex].ConnectDevice(devices[deviceIndex]);
+        }
+
+        public void DisconnectDeviceFromComputer(int computerIndex, Device device)
+        {
+            computers[computerIndex].DisconnectDevice(device);
+        }
     }
 }
