@@ -93,5 +93,11 @@ namespace SysPro_Lab_03
         {
             computers.RemoveAt(index);
         }
+
+        public void EditComputer(int index, int ID, Dictionary<PortType, int> portsCount)
+        {
+            computers[index].ID = ID;
+            computers[index].SetPortsCount(portsCount);
+        }
     }
 }
