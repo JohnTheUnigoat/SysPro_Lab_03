@@ -12,7 +12,7 @@ namespace SysPro_Lab_03
         //fields
         private static int currentID = 0;
 
-        public List<Device> Devices { get; }
+        private List<Device> devices;
 
         public class PortInfo
         {
@@ -40,10 +40,18 @@ namespace SysPro_Lab_03
             }
         }
 
-        public Dictionary<PortType, PortInfo> ports;
+        private Dictionary<PortType, PortInfo> ports;
 
         //properties
         public int ID { get; set; }
+
+        public ReadOnlyCollection<Device> Devices
+        {
+            get
+            {
+                return new ReadOnlyCollection<Device>(devices);
+            }
+        }
 
         public ReadOnlyDictionary<PortType, PortInfo> Ports
         {
@@ -77,7 +85,7 @@ namespace SysPro_Lab_03
         {
             ID = currentID++;
 
-            Devices = new List<Device>();
+            devices = new List<Device>();
 
             ports = new Dictionary<PortType, PortInfo>();
 
@@ -98,7 +106,7 @@ namespace SysPro_Lab_03
             if (ports[device.PortType].Available == 0)
                 throw new ArgumentException("All ports of this type are occupied!");
 
-            Devices.Add(device);
+            devices.Add(device);
 
             device.IsConnected = true;
 
@@ -117,7 +125,7 @@ namespace SysPro_Lab_03
 
             device.IsConnected = false;
 
-            Devices.Remove(device);
+            devices.Remove(device);
 
             return true;
         }

@@ -35,15 +35,15 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.cbComputers = new System.Windows.Forms.ComboBox();
+            this.lbSelectedComputerPorts = new System.Windows.Forms.ListBox();
             this.lbSelectedComputerDevices = new System.Windows.Forms.ListBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.btAddDevice = new System.Windows.Forms.Button();
             this.lbUnusedDevices = new System.Windows.Forms.ListBox();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btDisconnect = new System.Windows.Forms.Button();
             this.btConnect = new System.Windows.Forms.Button();
-            this.listBox2 = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -56,7 +56,7 @@
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.cbComputers);
-            this.groupBox1.Controls.Add(this.listBox2);
+            this.groupBox1.Controls.Add(this.lbSelectedComputerPorts);
             this.groupBox1.Controls.Add(this.lbSelectedComputerDevices);
             this.groupBox1.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox1.Location = new System.Drawing.Point(12, 3);
@@ -118,6 +118,15 @@
             this.cbComputers.Size = new System.Drawing.Size(88, 26);
             this.cbComputers.TabIndex = 3;
             // 
+            // lbSelectedComputerPorts
+            // 
+            this.lbSelectedComputerPorts.FormattingEnabled = true;
+            this.lbSelectedComputerPorts.ItemHeight = 18;
+            this.lbSelectedComputerPorts.Location = new System.Drawing.Point(6, 301);
+            this.lbSelectedComputerPorts.Name = "lbSelectedComputerPorts";
+            this.lbSelectedComputerPorts.Size = new System.Drawing.Size(301, 130);
+            this.lbSelectedComputerPorts.TabIndex = 1;
+            // 
             // lbSelectedComputerDevices
             // 
             this.lbSelectedComputerDevices.FormattingEnabled = true;
@@ -131,7 +140,7 @@
             // 
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.button6);
-            this.groupBox2.Controls.Add(this.button5);
+            this.groupBox2.Controls.Add(this.btAddDevice);
             this.groupBox2.Controls.Add(this.lbUnusedDevices);
             this.groupBox2.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox2.Location = new System.Drawing.Point(382, 3);
@@ -160,12 +169,12 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(6, 403);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(159, 32);
-            this.button5.TabIndex = 3;
-            this.button5.Text = "Add";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btAddDevice.Location = new System.Drawing.Point(6, 403);
+            this.btAddDevice.Name = "button5";
+            this.btAddDevice.Size = new System.Drawing.Size(159, 32);
+            this.btAddDevice.TabIndex = 3;
+            this.btAddDevice.Text = "Add";
+            this.btAddDevice.UseVisualStyleBackColor = true;
             // 
             // lbUnusedDevices
             // 
@@ -176,41 +185,32 @@
             this.lbUnusedDevices.Size = new System.Drawing.Size(312, 364);
             this.lbUnusedDevices.TabIndex = 1;
             // 
-            // button4
+            // btDisconnect
             // 
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button4.Location = new System.Drawing.Point(332, 172);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(44, 27);
-            this.button4.TabIndex = 5;
-            this.button4.Text = ">";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btDisconnect.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btDisconnect.Location = new System.Drawing.Point(332, 172);
+            this.btDisconnect.Name = "btDisconnect";
+            this.btDisconnect.Size = new System.Drawing.Size(44, 27);
+            this.btDisconnect.TabIndex = 5;
+            this.btDisconnect.Text = ">";
+            this.btDisconnect.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btConnect
             // 
             this.btConnect.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btConnect.Location = new System.Drawing.Point(332, 139);
-            this.btConnect.Name = "button3";
+            this.btConnect.Name = "btConnect";
             this.btConnect.Size = new System.Drawing.Size(44, 27);
             this.btConnect.TabIndex = 4;
             this.btConnect.Text = "<";
             this.btConnect.UseVisualStyleBackColor = true;
-            // 
-            // listBox2
-            // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.ItemHeight = 18;
-            this.listBox2.Location = new System.Drawing.Point(6, 301);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(301, 130);
-            this.listBox2.TabIndex = 1;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(714, 450);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.btDisconnect);
             this.Controls.Add(this.btConnect);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -237,13 +237,13 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btAddDevice;
         private System.Windows.Forms.ListBox lbUnusedDevices;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btDisconnect;
         private System.Windows.Forms.Button btConnect;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.ListBox lbSelectedComputerPorts;
     }
 }
 

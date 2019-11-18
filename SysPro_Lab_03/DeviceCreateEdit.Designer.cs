@@ -36,7 +36,7 @@
             this.ManufacturerTextBox = new System.Windows.Forms.TextBox();
             this.TypeComboBox = new System.Windows.Forms.ComboBox();
             this.PortComboBox = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btCreateEdit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -111,18 +111,18 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 149);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(246, 55);
-            this.button1.TabIndex = 8;
-            this.button1.UseVisualStyleBackColor = true;
+            this.btCreateEdit.Location = new System.Drawing.Point(12, 149);
+            this.btCreateEdit.Name = "button1";
+            this.btCreateEdit.Size = new System.Drawing.Size(246, 55);
+            this.btCreateEdit.TabIndex = 8;
+            this.btCreateEdit.UseVisualStyleBackColor = true;
             // 
             // DeviceCreateEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(272, 215);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btCreateEdit);
             this.Controls.Add(this.PortComboBox);
             this.Controls.Add(this.TypeComboBox);
             this.Controls.Add(this.ManufacturerTextBox);
@@ -150,6 +150,6 @@
         private System.Windows.Forms.TextBox ManufacturerTextBox;
         private System.Windows.Forms.ComboBox TypeComboBox;
         private System.Windows.Forms.ComboBox PortComboBox;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btCreateEdit;
     }
 }

@@ -14,11 +14,14 @@ namespace SysPro_Lab_03
     {
         private DeviceManager manager;
 
+        private BindingSource bsManager;
         private BindingSource bsComputers;
 
         public Form1()
         {
             InitializeComponent();
+
+            deviceCreateEditForm = new DeviceCreateEdit();
 
             manager = new DeviceManager();
 
@@ -33,33 +36,54 @@ namespace SysPro_Lab_03
             manager.AddComputer(new Computer(dict));
 
             manager.AddDevice(new Device("G Pro Wireless", "Logitech", Device.DeviceType.Mouse, PortType.USB));
-            manager.AddDevice(new Device("Y Pro Wireless", "Logitech", Device.DeviceType.Mouse, PortType.USB));
-            manager.AddDevice(new Device("Omega Pro Wireless", "Logitech", Device.DeviceType.Mouse, PortType.USB));
+            manager.AddDevice(new Device("Mamba", "Razer", Device.DeviceType.Mouse, PortType.USB));
+            manager.AddDevice(new Device("Rival 600", "SteelSeries", Device.DeviceType.Mouse, PortType.USB));
+            manager.AddDevice(new Device("Rival 600", "SteelSeries", Device.DeviceType.Mouse, PortType.USB));
+            manager.AddDevice(new Device("Rival 600", "SteelSeries", Device.DeviceType.Mouse, PortType.USB));
+            manager.AddDevice(new Device("Rival 600", "SteelSeries", Device.DeviceType.Mouse, PortType.USB));
 
+            bsManager = new BindingSource();
             bsComputers = new BindingSource();
 
+            bsManager.DataSource = manager;
             bsComputers.DataSource = manager.Computers;
 
             cbComputers.DataSource = bsComputers;
 
-            lbUnusedDevices.DataSource = manager.UnusedDevices;
-            
-            listBox2.DataBindings.Add("DataSource", bsComputers, "PortList");
+            lbSelectedComputerPorts.DataBindings.Add("DataSource", bsComputers, "PortList");
+            lbSelectedComputerDevices.DataBindings.Add("DataSource", bsComputers, "Devices");
+            lbUnusedDevices.DataBindings.Add("DataSource", bsManager, "UnusedDevices");
 
             btConnect.Click += btConnectClick;
-            cbComputers.SelectedIndexChanged += SelectedComputerChanged;
-        }
-
-        private void SelectedComputerChanged(object sender, EventArgs e)
-        {
-            lbSelectedComputerDevices.DataSource = (cbComputers.SelectedItem as Computer).Devices;
+            btDisconnect.Click += btDisconnectClick;
         }
 
         private void btConnectClick(object sender, EventArgs e)
         {
-            manager.ConnectDeviceToComputer(lbUnusedDevices.SelectedItem as Device, bsComputers.Position);
-            lbUnusedDevices.DataSource = manager.UnusedDevices;
-            lbSelectedComputerDevices.DataSource = (bsComputers.Current as Computer).Devices;
+            if (lbUnusedDevices.SelectedItem == null)
+                return;
+
+            try { manager.ConnectDeviceToComputer(lbUnusedDevices.SelectedItem as Device, bsComputers.Position); }
+            catch(ArgumentException exception)
+            {
+                MessageBox.Show(exception.Message, "Error!");
+            }
+            bsComputers.ResetBindings(false);
+            bsManager.ResetBindings(false);
+        }
+
+        private void btDisconnectClick(object sender, EventArgs e)
+        {
+            if (lbSelectedComputerDevices.SelectedItem == null)
+                return;
+
+            try { manager.DisconnectDeviceFromComputer(bsComputers.Position, lbSelectedComputerDevices.SelectedItem as Device); }
+            catch (ArgumentException exception)
+            {
+                MessageBox.Show(exception.Message, "Error!");
+            }
+            bsComputers.ResetBindings(false);
+            bsManager.ResetBindings(false);
         }
     }
 }
