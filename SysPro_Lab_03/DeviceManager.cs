@@ -119,7 +119,7 @@ namespace SysPro_Lab_03
             }
         }
 
-        public void RemoveDevict(Device device)
+        public void RemoveDevice(Device device)
         {
             if (device.IsConnected)
                 throw new ArgumentException("Can't remove connected device!");

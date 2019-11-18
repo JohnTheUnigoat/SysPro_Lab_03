@@ -17,6 +17,8 @@ namespace SysPro_Lab_03
         private BindingSource bsManager;
         private BindingSource bsComputers;
 
+        private DeviceCreateEdit deviceCreateEditForm;
+
         public Form1()
         {
             InitializeComponent();
@@ -56,6 +58,40 @@ namespace SysPro_Lab_03
 
             btConnect.Click += btConnectClick;
             btDisconnect.Click += btDisconnectClick;
+            btAddDevice.Click += btAddDeviceClick;
+            lbUnusedDevices.DoubleClick += DevicesDoubleClick;
+            btDeleteDevice.Click += btDeleteDeviceCLick;
+        }
+
+        private void btDeleteDeviceCLick(object sender, EventArgs e)
+        {
+            if (lbUnusedDevices.SelectedItem == null)
+                return;
+
+            manager.RemoveDevice(lbUnusedDevices.SelectedItem as Device);
+            bsManager.ResetBindings(false);
+        }
+
+        private void DevicesDoubleClick(object sender, EventArgs e)
+        {
+            if (lbUnusedDevices.SelectedItem == null)
+                return;
+
+            deviceCreateEditForm.SetEdit(lbUnusedDevices.SelectedItem as Device);
+            deviceCreateEditForm.ShowDialog();
+
+            bsManager.ResetBindings(false);
+        }
+
+        private void btAddDeviceClick(object sender, EventArgs e)
+        {
+            deviceCreateEditForm.SetCreate();
+
+            if(deviceCreateEditForm.ShowDialog() == DialogResult.OK)
+            {
+                manager.AddDevice(deviceCreateEditForm.WorkingDevice);
+                bsManager.ResetBindings(false);
+            }
         }
 
         private void btConnectClick(object sender, EventArgs e)

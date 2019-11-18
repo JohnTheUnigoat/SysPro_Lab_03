@@ -39,7 +39,7 @@
             this.lbSelectedComputerDevices = new System.Windows.Forms.ListBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
+            this.btDeleteDevice = new System.Windows.Forms.Button();
             this.btAddDevice = new System.Windows.Forms.Button();
             this.lbUnusedDevices = new System.Windows.Forms.ListBox();
             this.btDisconnect = new System.Windows.Forms.Button();
@@ -139,7 +139,7 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.button6);
+            this.groupBox2.Controls.Add(this.btDeleteDevice);
             this.groupBox2.Controls.Add(this.btAddDevice);
             this.groupBox2.Controls.Add(this.lbUnusedDevices);
             this.groupBox2.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -160,12 +160,12 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(171, 403);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(147, 32);
-            this.button6.TabIndex = 4;
-            this.button6.Text = "Delete";
-            this.button6.UseVisualStyleBackColor = true;
+            this.btDeleteDevice.Location = new System.Drawing.Point(171, 403);
+            this.btDeleteDevice.Name = "button6";
+            this.btDeleteDevice.Size = new System.Drawing.Size(147, 32);
+            this.btDeleteDevice.TabIndex = 4;
+            this.btDeleteDevice.Text = "Delete";
+            this.btDeleteDevice.UseVisualStyleBackColor = true;
             // 
             // button5
             // 
@@ -236,7 +236,7 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button btDeleteDevice;
         private System.Windows.Forms.Button btAddDevice;
         private System.Windows.Forms.ListBox lbUnusedDevices;
         private System.Windows.Forms.Label label3;

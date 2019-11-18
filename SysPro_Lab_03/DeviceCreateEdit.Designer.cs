@@ -32,10 +32,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.NameTextBox = new System.Windows.Forms.TextBox();
-            this.ManufacturerTextBox = new System.Windows.Forms.TextBox();
-            this.TypeComboBox = new System.Windows.Forms.ComboBox();
-            this.PortComboBox = new System.Windows.Forms.ComboBox();
+            this.tbName = new System.Windows.Forms.TextBox();
+            this.tbManufacturer = new System.Windows.Forms.TextBox();
+            this.cbDeviceType = new System.Windows.Forms.ComboBox();
+            this.cbPortType = new System.Windows.Forms.ComboBox();
             this.btCreateEdit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -81,33 +81,33 @@
             // 
             // NameTextBox
             // 
-            this.NameTextBox.Location = new System.Drawing.Point(114, 13);
-            this.NameTextBox.Name = "NameTextBox";
-            this.NameTextBox.Size = new System.Drawing.Size(144, 20);
-            this.NameTextBox.TabIndex = 4;
+            this.tbName.Location = new System.Drawing.Point(114, 13);
+            this.tbName.Name = "NameTextBox";
+            this.tbName.Size = new System.Drawing.Size(144, 20);
+            this.tbName.TabIndex = 4;
             // 
             // ManufacturerTextBox
             // 
-            this.ManufacturerTextBox.Location = new System.Drawing.Point(114, 49);
-            this.ManufacturerTextBox.Name = "ManufacturerTextBox";
-            this.ManufacturerTextBox.Size = new System.Drawing.Size(144, 20);
-            this.ManufacturerTextBox.TabIndex = 5;
+            this.tbManufacturer.Location = new System.Drawing.Point(114, 49);
+            this.tbManufacturer.Name = "ManufacturerTextBox";
+            this.tbManufacturer.Size = new System.Drawing.Size(144, 20);
+            this.tbManufacturer.TabIndex = 5;
             // 
             // TypeComboBox
             // 
-            this.TypeComboBox.FormattingEnabled = true;
-            this.TypeComboBox.Location = new System.Drawing.Point(114, 85);
-            this.TypeComboBox.Name = "TypeComboBox";
-            this.TypeComboBox.Size = new System.Drawing.Size(144, 21);
-            this.TypeComboBox.TabIndex = 6;
+            this.cbDeviceType.FormattingEnabled = true;
+            this.cbDeviceType.Location = new System.Drawing.Point(114, 85);
+            this.cbDeviceType.Name = "TypeComboBox";
+            this.cbDeviceType.Size = new System.Drawing.Size(144, 21);
+            this.cbDeviceType.TabIndex = 6;
             // 
             // PortComboBox
             // 
-            this.PortComboBox.FormattingEnabled = true;
-            this.PortComboBox.Location = new System.Drawing.Point(114, 122);
-            this.PortComboBox.Name = "PortComboBox";
-            this.PortComboBox.Size = new System.Drawing.Size(144, 21);
-            this.PortComboBox.TabIndex = 7;
+            this.cbPortType.FormattingEnabled = true;
+            this.cbPortType.Location = new System.Drawing.Point(114, 122);
+            this.cbPortType.Name = "PortComboBox";
+            this.cbPortType.Size = new System.Drawing.Size(144, 21);
+            this.cbPortType.TabIndex = 7;
             // 
             // button1
             // 
@@ -123,10 +123,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(272, 215);
             this.Controls.Add(this.btCreateEdit);
-            this.Controls.Add(this.PortComboBox);
-            this.Controls.Add(this.TypeComboBox);
-            this.Controls.Add(this.ManufacturerTextBox);
-            this.Controls.Add(this.NameTextBox);
+            this.Controls.Add(this.cbPortType);
+            this.Controls.Add(this.cbDeviceType);
+            this.Controls.Add(this.tbManufacturer);
+            this.Controls.Add(this.tbName);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -146,10 +146,10 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox NameTextBox;
-        private System.Windows.Forms.TextBox ManufacturerTextBox;
-        private System.Windows.Forms.ComboBox TypeComboBox;
-        private System.Windows.Forms.ComboBox PortComboBox;
+        private System.Windows.Forms.TextBox tbName;
+        private System.Windows.Forms.TextBox tbManufacturer;
+        private System.Windows.Forms.ComboBox cbDeviceType;
+        private System.Windows.Forms.ComboBox cbPortType;
         private System.Windows.Forms.Button btCreateEdit;
     }
 }
