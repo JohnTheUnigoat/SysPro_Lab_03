@@ -32,7 +32,7 @@
             this.button7 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btAddComputer = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.cbComputers = new System.Windows.Forms.ComboBox();
             this.lbSelectedComputerPorts = new System.Windows.Forms.ListBox();
@@ -53,7 +53,7 @@
             this.groupBox1.Controls.Add(this.button7);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.btAddComputer);
             this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.cbComputers);
             this.groupBox1.Controls.Add(this.lbSelectedComputerPorts);
@@ -94,12 +94,12 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(104, 15);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(62, 38);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "New";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btAddComputer.Location = new System.Drawing.Point(104, 15);
+            this.btAddComputer.Name = "button1";
+            this.btAddComputer.Size = new System.Drawing.Size(62, 38);
+            this.btAddComputer.TabIndex = 5;
+            this.btAddComputer.Text = "New";
+            this.btAddComputer.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
@@ -158,19 +158,19 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "Unused Devices";
             // 
-            // button6
+            // btDeleteDevice
             // 
             this.btDeleteDevice.Location = new System.Drawing.Point(171, 403);
-            this.btDeleteDevice.Name = "button6";
+            this.btDeleteDevice.Name = "btDeleteDevice";
             this.btDeleteDevice.Size = new System.Drawing.Size(147, 32);
             this.btDeleteDevice.TabIndex = 4;
             this.btDeleteDevice.Text = "Delete";
             this.btDeleteDevice.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // btAddDevice
             // 
             this.btAddDevice.Location = new System.Drawing.Point(6, 403);
-            this.btAddDevice.Name = "button5";
+            this.btAddDevice.Name = "btAddDevice";
             this.btAddDevice.Size = new System.Drawing.Size(159, 32);
             this.btAddDevice.TabIndex = 3;
             this.btAddDevice.Text = "Add";
@@ -229,7 +229,7 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btAddComputer;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ComboBox cbComputers;
         private System.Windows.Forms.ListBox lbSelectedComputerDevices;

@@ -10,7 +10,7 @@ namespace SysPro_Lab_03
     class Computer
     {
         //fields
-        private static int currentID = 0;
+        public static int currentID = 0;
 
         private List<Device> devices;
 
@@ -40,7 +40,7 @@ namespace SysPro_Lab_03
             }
         }
 
-        private Dictionary<PortType, PortInfo> ports;
+        private List<PortInfo> ports;
 
         //properties
         public int ID { get; set; }
@@ -53,11 +53,11 @@ namespace SysPro_Lab_03
             }
         }
 
-        public ReadOnlyDictionary<PortType, PortInfo> Ports
+        public ReadOnlyCollection<PortInfo> Ports
         {
             get
             {
-                return new ReadOnlyDictionary<PortType, PortInfo>(ports);
+                return new ReadOnlyCollection<PortInfo>(ports);
             }
         }
 
@@ -69,10 +69,10 @@ namespace SysPro_Lab_03
 
                 var sb = new StringBuilder();
 
-                foreach(var key in ports.Keys)
+                for(int i = 0; i < ports.Count; i++)
                 {
                     sb.Clear();
-                    sb.AppendFormat("{0} - {1}", key.ToString().Replace('_', ' '), ports[key].ToString());
+                    sb.AppendFormat("{0} - {1}", ((PortType)i).ToString().Replace('_', ' '), ports[i].ToString());
                     res.Add(sb.ToString());
                 }
 
@@ -81,17 +81,16 @@ namespace SysPro_Lab_03
         }
 
         //methods
-        public Computer(Dictionary<PortType, int> portsCount)
+        public Computer(List<int> ports)
         {
             ID = currentID++;
 
             devices = new List<Device>();
+            this.ports = new List<PortInfo>(Program.portTypesCount);
 
-            ports = new Dictionary<PortType, PortInfo>();
-
-            foreach(var type in portsCount.Keys)
+            foreach(var portCount in ports)
             {
-                ports[type] = new PortInfo(portsCount[type], 0);
+                this.ports.Add(new PortInfo(portCount, 0));
             }
         }
 
@@ -100,17 +99,17 @@ namespace SysPro_Lab_03
             if (device.IsConnected)
                 throw new ArgumentException("Device already in use!");
 
-            if (!ports.Keys.Contains(device.PortType))
+            if (ports[(int)device.PortType].Total == 0)
                 throw new ArgumentException("This computer doesn't support this port!");
 
-            if (ports[device.PortType].Available == 0)
+            if (ports[(int)device.PortType].Available == 0)
                 throw new ArgumentException("All ports of this type are occupied!");
 
             devices.Add(device);
 
             device.IsConnected = true;
 
-            ports[device.PortType].Occupied++;
+            ports[(int)device.PortType].Occupied++;
         }
 
         public bool DisconnectDevice(Device device)
@@ -121,7 +120,7 @@ namespace SysPro_Lab_03
             if (!Devices.Contains(device))
                 return false;
 
-            ports[device.PortType].Occupied--;
+            ports[(int)device.PortType].Occupied--;
 
             device.IsConnected = false;
 
@@ -132,25 +131,20 @@ namespace SysPro_Lab_03
 
         public void SetPortCount(PortType type, int count)
         {
-            if (ports.ContainsKey(type))
+            if (count < ports[(int)type].Occupied)
             {
-                if (count < ports[type].Occupied)
-                {
-                    var e = new ArgumentException("New port count can't be smaller than the number of occupied ports!");
-                    e.Data.Add(Program.SetPortExceptionKey, type);
-                    throw e;
-                }
-                else if (count == 0)
-                    ports.Remove(type);
+                var e = new ArgumentException("New port count can't be smaller than the number of occupied ports!");
+                e.Data.Add(Program.SetPortExceptionKey, type);
+                throw e;
             }
-            else if(count !=0)
-                ports[type].Total = count;
+            else
+                ports[(int)type].Total = count;
         }
 
-        public void SetPortsCount(Dictionary<PortType, int> portsCount)
+        public void SetPortsCount(List<int> portsCount)
         {
-            foreach (var type in portsCount.Keys)
-                SetPortCount(type, portsCount[type]);
+            for (int i = 0; i < portsCount.Count; i++)
+                SetPortCount((PortType)i, portsCount[i]);
         }
 
         public override string ToString()

@@ -18,24 +18,26 @@ namespace SysPro_Lab_03
         private BindingSource bsComputers;
 
         private DeviceCreateEdit deviceCreateEditForm;
+        private ComputerCreation computerCreationForm;
 
         public Form1()
         {
             InitializeComponent();
 
             deviceCreateEditForm = new DeviceCreateEdit();
+            computerCreationForm = new ComputerCreation();
 
             manager = new DeviceManager();
 
-            Dictionary<PortType, int> dict = new Dictionary<PortType, int>()
-            {
-                [PortType.USB] = 5,
-                [PortType.Micro_USB] = 24
-            };
+            List<int> ports = new List<int>(Program.portTypesCount);
+            for (int i = 0; i < Program.portTypesCount; i++)
+                ports.Add(0);
 
-            manager.AddComputer(new Computer(dict));
-            manager.AddComputer(new Computer(dict));
-            manager.AddComputer(new Computer(dict));
+            ports[(int)PortType.USB] = 5;
+
+            manager.AddComputer(new Computer(ports));
+            manager.AddComputer(new Computer(ports));
+            manager.AddComputer(new Computer(ports));
 
             manager.AddDevice(new Device("G Pro Wireless", "Logitech", Device.DeviceType.Mouse, PortType.USB));
             manager.AddDevice(new Device("Mamba", "Razer", Device.DeviceType.Mouse, PortType.USB));
@@ -61,6 +63,20 @@ namespace SysPro_Lab_03
             btAddDevice.Click += btAddDeviceClick;
             lbUnusedDevices.DoubleClick += DevicesDoubleClick;
             btDeleteDevice.Click += btDeleteDeviceCLick;
+
+            btAddComputer.Click += btAddComputerClick;
+        }
+
+        private void btAddComputerClick(object sender, EventArgs e)
+        {
+            computerCreationForm.Reset();
+
+            if(computerCreationForm.ShowDialog() == DialogResult.OK)
+            {
+                manager.AddComputer(computerCreationForm.CreatedComputer);
+                bsComputers.ResetBindings(false);
+                bsComputers.Position = Computer.currentID - 1;
+            }
         }
 
         private void btDeleteDeviceCLick(object sender, EventArgs e)
