@@ -66,6 +66,29 @@ namespace SysPro_Lab_03
 
             btAddComputer.Click += btAddComputerClick;
             btEditComputer.Click += btEditComputerClick;
+            btDeleteComputer.Click += btDeleteComputerClick;
+        }
+
+        private void btDeleteComputerClick(object sender, EventArgs e)
+        {
+            if (bsComputers.Current == null)
+                return;
+
+            if ((bsComputers.Current as Computer).Devices.Count > 0)
+            {
+                MessageBox.Show("Can't remove computer - disconnect all its devices first!", "Error!");
+                return;
+            }
+            manager.RemoveComputer(bsComputers.Position);
+
+            if (bsComputers.Count == 0)
+            {
+                lbSelectedComputerPorts.DataBindings.Clear();
+                lbSelectedComputerPorts.DataSource = null;
+                lbSelectedComputerPorts.Items.Clear();
+                lbSelectedComputerDevices.DataBindings.Clear();
+            }
+            bsComputers.ResetBindings(false);
         }
 
         private void btEditComputerClick(object sender, EventArgs e)
@@ -86,6 +109,13 @@ namespace SysPro_Lab_03
             if(computerCreateEditForm.ShowDialog() == DialogResult.OK)
             {
                 manager.AddComputer(computerCreateEditForm.WorkingComputer);
+                
+                if(manager.ComputerCount == 1)
+                {
+                    lbSelectedComputerPorts.DataBindings.Add("DataSource", bsComputers, "PortList");
+                    lbSelectedComputerDevices.DataBindings.Add("DataSource", bsComputers, "Devices");
+                }
+
                 bsComputers.ResetBindings(false);
                 bsComputers.Position = Computer.currentID - 1;
             }

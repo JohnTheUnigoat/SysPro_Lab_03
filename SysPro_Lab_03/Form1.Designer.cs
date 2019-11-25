@@ -33,7 +33,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btAddComputer = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btDeleteComputer = new System.Windows.Forms.Button();
             this.cbComputers = new System.Windows.Forms.ComboBox();
             this.lbSelectedComputerPorts = new System.Windows.Forms.ListBox();
             this.lbSelectedComputerDevices = new System.Windows.Forms.ListBox();
@@ -54,7 +54,7 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.btAddComputer);
-            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Controls.Add(this.btDeleteComputer);
             this.groupBox1.Controls.Add(this.cbComputers);
             this.groupBox1.Controls.Add(this.lbSelectedComputerPorts);
             this.groupBox1.Controls.Add(this.lbSelectedComputerDevices);
@@ -103,12 +103,12 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(245, 15);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(62, 38);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Delete";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btDeleteComputer.Location = new System.Drawing.Point(245, 15);
+            this.btDeleteComputer.Name = "button2";
+            this.btDeleteComputer.Size = new System.Drawing.Size(62, 38);
+            this.btDeleteComputer.TabIndex = 4;
+            this.btDeleteComputer.Text = "Delete";
+            this.btDeleteComputer.UseVisualStyleBackColor = true;
             // 
             // cbComputers
             // 
@@ -230,7 +230,7 @@
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btAddComputer;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btDeleteComputer;
         private System.Windows.Forms.ComboBox cbComputers;
         private System.Windows.Forms.ListBox lbSelectedComputerDevices;
         private System.Windows.Forms.GroupBox groupBox2;
