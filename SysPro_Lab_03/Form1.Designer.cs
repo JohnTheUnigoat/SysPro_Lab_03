@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button7 = new System.Windows.Forms.Button();
+            this.btEditComputer = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btAddComputer = new System.Windows.Forms.Button();
@@ -50,7 +50,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button7);
+            this.groupBox1.Controls.Add(this.btEditComputer);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.btAddComputer);
@@ -67,12 +67,12 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(175, 15);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(62, 38);
-            this.button7.TabIndex = 8;
-            this.button7.Text = "Edit";
-            this.button7.UseVisualStyleBackColor = true;
+            this.btEditComputer.Location = new System.Drawing.Point(175, 15);
+            this.btEditComputer.Name = "button7";
+            this.btEditComputer.Size = new System.Drawing.Size(62, 38);
+            this.btEditComputer.TabIndex = 8;
+            this.btEditComputer.Text = "Edit";
+            this.btEditComputer.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -242,7 +242,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btDisconnect;
         private System.Windows.Forms.Button btConnect;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button btEditComputer;
         private System.Windows.Forms.ListBox lbSelectedComputerPorts;
     }
 }

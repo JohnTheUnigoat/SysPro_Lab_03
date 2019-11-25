@@ -10,15 +10,40 @@ using System.Windows.Forms;
 
 namespace SysPro_Lab_03
 {
-    public partial class ComputerCreation : Form
+    public partial class ComputerCreateEdit : Form
     {
         private List<PortInfoControl> portInfoControls;
 
-        internal Computer CreatedComputer { get; private set; }
+        private Computer workingComputer;
+
+        internal Computer WorkingComputer {
+            get { return workingComputer; }
+            private set
+            {
+                if (value == null)
+                {
+                    foreach(var port in portInfoControls)
+                    {
+                        port.updPortCount.Value = 0;
+                        port.updPortCount.Minimum = 0;
+                    }
+                }
+                else
+                {
+                    for(int i = 0; i < Program.portTypesCount; i++)
+                    {
+                        portInfoControls[i].updPortCount.Value = value.Ports[i].Total;
+                        portInfoControls[i].updPortCount.Minimum = value.Ports[i].Occupied;
+                    }
+                }
+
+                workingComputer = value;
+            }
+        }
 
         private List<int> ports;
 
-        public ComputerCreation()
+        public ComputerCreateEdit()
         {
             InitializeComponent();
 
@@ -33,25 +58,38 @@ namespace SysPro_Lab_03
 
             ports = new List<int>(Program.portTypesCount);
 
-            btOk.Click += OkClick;
+            btOk.Click += btOkClick;
         }
 
-        private void OkClick(object sender, EventArgs e)
+        private void btOkClick(object sender, EventArgs e)
         {
-            for(int i = 0; i < portInfoControls.Count; i++)
+            for (int i = 0; i < portInfoControls.Count; i++)
             {
                 ports.Add((int)portInfoControls[i].updPortCount.Value);
             }
 
-            CreatedComputer = new Computer(ports);
+            if (WorkingComputer == null)
+                workingComputer = new Computer(ports);
+            else
+                workingComputer.SetPortsCount(ports);
 
             DialogResult = DialogResult.OK;
             Close();
         }
 
-        public void Reset()
+        public void SetCreate()
         {
-            lblFutureID.Text = String.Format("Future ID: {0}", Computer.currentID);
+            WorkingComputer = null;
+
+            lblID.Text = string.Format("ID: {0}", Computer.currentID);
+            ports.Clear();
+        }
+
+        internal void SetEdit(Computer computer)
+        {
+            WorkingComputer = computer;
+
+            lblID.Text = string.Format("ID: {0}", computer.ID);
             ports.Clear();
         }
     }

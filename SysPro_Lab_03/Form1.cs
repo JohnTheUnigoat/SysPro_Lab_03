@@ -18,14 +18,14 @@ namespace SysPro_Lab_03
         private BindingSource bsComputers;
 
         private DeviceCreateEdit deviceCreateEditForm;
-        private ComputerCreation computerCreationForm;
+        private ComputerCreateEdit computerCreateEditForm;
 
         public Form1()
         {
             InitializeComponent();
 
             deviceCreateEditForm = new DeviceCreateEdit();
-            computerCreationForm = new ComputerCreation();
+            computerCreateEditForm = new ComputerCreateEdit();
 
             manager = new DeviceManager();
 
@@ -65,15 +65,27 @@ namespace SysPro_Lab_03
             btDeleteDevice.Click += btDeleteDeviceCLick;
 
             btAddComputer.Click += btAddComputerClick;
+            btEditComputer.Click += btEditComputerClick;
+        }
+
+        private void btEditComputerClick(object sender, EventArgs e)
+        {
+            if (bsComputers.Current == null)
+                return;
+
+            computerCreateEditForm.SetEdit(bsComputers.Current as Computer);
+            computerCreateEditForm.ShowDialog();
+
+            bsComputers.ResetBindings(false);
         }
 
         private void btAddComputerClick(object sender, EventArgs e)
         {
-            computerCreationForm.Reset();
+            computerCreateEditForm.SetCreate();
 
-            if(computerCreationForm.ShowDialog() == DialogResult.OK)
+            if(computerCreateEditForm.ShowDialog() == DialogResult.OK)
             {
-                manager.AddComputer(computerCreationForm.CreatedComputer);
+                manager.AddComputer(computerCreateEditForm.WorkingComputer);
                 bsComputers.ResetBindings(false);
                 bsComputers.Position = Computer.currentID - 1;
             }

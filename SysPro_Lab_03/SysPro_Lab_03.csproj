@@ -48,11 +48,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Computer.cs" />
-    <Compile Include="ComputerCreation.cs">
+    <Compile Include="ComputerCreateEdit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ComputerCreation.Designer.cs">
-      <DependentUpon>ComputerCreation.cs</DependentUpon>
+    <Compile Include="ComputerCreateEdit.Designer.cs">
+      <DependentUpon>ComputerCreateEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="ComputerEdit.cs">
       <SubType>Form</SubType>
@@ -76,8 +76,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="ComputerCreation.resx">
-      <DependentUpon>ComputerCreation.cs</DependentUpon>
+    <EmbeddedResource Include="ComputerCreateEdit.resx">
+      <DependentUpon>ComputerCreateEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ComputerEdit.resx">
       <DependentUpon>ComputerEdit.cs</DependentUpon>

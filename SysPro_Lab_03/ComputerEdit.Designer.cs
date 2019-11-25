@@ -28,25 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
             this.PortNumeric = new System.Windows.Forms.NumericUpDown();
-            this.PortGridView = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.pnlPorts = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.PortNumeric)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PortGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Trebuchet MS", 9.75F);
-            this.label1.Location = new System.Drawing.Point(9, 194);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(72, 18);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Port count:";
             // 
             // PortNumeric
             // 
@@ -60,62 +48,55 @@
             this.PortNumeric.Size = new System.Drawing.Size(49, 20);
             this.PortNumeric.TabIndex = 2;
             // 
-            // PortGridView
-            // 
-            this.PortGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.PortGridView.Location = new System.Drawing.Point(12, 36);
-            this.PortGridView.Name = "PortGridView";
-            this.PortGridView.Size = new System.Drawing.Size(182, 150);
-            this.PortGridView.TabIndex = 3;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(13, 13);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 13);
+            this.label2.Size = new System.Drawing.Size(86, 13);
             this.label2.TabIndex = 4;
-            this.label2.Text = "Computer ID:";
+            this.label2.Text = "Computer ID: {0}";
             // 
-            // numericUpDown1
+            // groupBox1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(82, 11);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
-            99,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(49, 20);
-            this.numericUpDown1.TabIndex = 5;
+            this.groupBox1.Controls.Add(this.pnlPorts);
+            this.groupBox1.Location = new System.Drawing.Point(12, 29);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(159, 225);
+            this.groupBox1.TabIndex = 13;
+            this.groupBox1.TabStop = false;
+            // 
+            // pnlPorts
+            // 
+            this.pnlPorts.AutoScroll = true;
+            this.pnlPorts.Location = new System.Drawing.Point(6, 12);
+            this.pnlPorts.Name = "pnlPorts";
+            this.pnlPorts.Size = new System.Drawing.Size(147, 207);
+            this.pnlPorts.TabIndex = 11;
             // 
             // ComputerEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(218, 226);
-            this.Controls.Add(this.numericUpDown1);
+            this.ClientSize = new System.Drawing.Size(182, 262);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.PortGridView);
             this.Controls.Add(this.PortNumeric);
-            this.Controls.Add(this.label1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ComputerEdit";
             this.Text = "ComputerEdit";
             ((System.ComponentModel.ISupportInitialize)(this.PortNumeric)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PortGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.NumericUpDown PortNumeric;
-        private System.Windows.Forms.DataGridView PortGridView;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Panel pnlPorts;
     }
 }

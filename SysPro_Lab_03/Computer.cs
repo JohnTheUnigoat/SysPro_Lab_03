@@ -43,7 +43,7 @@ namespace SysPro_Lab_03
         private List<PortInfo> ports;
 
         //properties
-        public int ID { get; set; }
+        public int ID { get; private set; }
 
         public ReadOnlyCollection<Device> Devices
         {

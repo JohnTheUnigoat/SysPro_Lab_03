@@ -12,6 +12,8 @@ namespace SysPro_Lab_03
 {
     public partial class ComputerEdit : Form
     {
+        internal Computer EditComputer { get; set; }
+
         public ComputerEdit()
         {
             InitializeComponent();
